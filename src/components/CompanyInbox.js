@@ -14,7 +14,7 @@ class CompanyInbox extends Component {
      replay:'',
    }
     
-   
+     
   componentWillMount(){
     this.props.dispatch(getInboxList(JSON.stringify(this.state.data)))
   }

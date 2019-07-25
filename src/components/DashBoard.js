@@ -1,13 +1,14 @@
 import React,{Component} from 'react';
 import {Container,Tab,Menu} from 'semantic-ui-react'
 import CompanyInbox from './CompanyInbox';
+import CreateMenu from './createMenu';
 
 class DashBoard extends Component {
    
   
       render(){
         const panes = [
-          { menuItem: 'Create Menu', render: () => <Tab.Pane></Tab.Pane> },
+          { menuItem: 'Create Menu', render: () => <Tab.Pane><CreateMenu/></Tab.Pane> },
           { menuItem: 'Message Inbox', render: () => <Tab.Pane><CompanyInbox/></Tab.Pane> },
                 ]
           return(
