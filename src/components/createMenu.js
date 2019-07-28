@@ -21,15 +21,15 @@ class createMenu extends Component {
   showUi(){
     return this.state.questionsandanswer.map((el,i) => (
       <div key={i}>
-      <label>{`${i + 1}-Question`}</label>  
+      <label>{`${i + 1}-Question & Answer`}</label>  
       <Input 
        placeholder="question" 
        name="question" 
        value={el.question ||''}
        onChange={this.createHandleChange.bind(this, i)} 
        />
-        
-   
+       <br/>
+       <br/>
        <Input 
        placeholder="answer" 
        name="answer" 
@@ -40,13 +40,15 @@ class createMenu extends Component {
       <Input 
        placeholder="questionorder" 
        name="questionorder" 
+       style={{display: 'none'}}
        value={el.questionorder = i + 1}
        onChange={this.createHandleChange.bind(this, i)} 
        />
      
      <Input 
        name="registeration_id" 
-       value={el.registeration_id = 1}
+       style={{display: 'none'}}
+       value={el.registeration_id = "+249963176212"}
        onChange={this.createHandleChange.bind(this, i)} 
        />
        <input  
@@ -108,8 +110,8 @@ handleSubmit(event) {
   this.setState({errors});
   const isValid = Object.keys(errors).length === 0;
   if(isValid){
-    const isonline = navigator.onLine;
-    if(isonline){
+    // const isonline = navigator.onLine;
+    // if(isonline){
       let axiosConfig = {
         headers: {
           'Content-Type': 'application/json'        }    
@@ -122,9 +124,9 @@ handleSubmit(event) {
     }).catch(error=>{
             console.log(error)
     }) 
-    }else{
-      alert('Dear User No Internet Connection Available');
-    }
+    // }else{
+    //   alert('Dear User No Internet Connection Available');
+    // }
   }
      
    }
@@ -135,7 +137,7 @@ handleSubmit(event) {
   return(  
        <div>   
       <Header as='h2' textAlign='center'>
-      New Menu
+      Create New Menu
     </Header> 
     <br/>
        <br/>

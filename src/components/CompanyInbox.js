@@ -51,7 +51,7 @@ sendReplay = (userPhoneNumber) =>{
       render() { 
             return( 
             <div>
-              {this.props.inboxlist.inbox.inboxlist?
+              {this.props.inboxlist.inbox.inboxlist && this.props.inboxlist.inbox.inboxlist.msgs != null ?
                 this.props.inboxlist.inbox.inboxlist.msgs.map((item,i)=>(
                 <Item.Group key={i}>
                <Item>    
