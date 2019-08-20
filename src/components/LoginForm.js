@@ -60,7 +60,7 @@ class Login extends Component {
       <Grid.Column style={{ maxWidth: 450 }}>
         {
          <Header as='h2' color='blue' textAlign='center'>
-           Log-in To Your Account
+            SMS Admin Login
         </Header>         
         }
         <Form size='large' onSubmit={this.SubmitForm}>
@@ -75,7 +75,7 @@ class Login extends Component {
               id='username'
               name='username'    
             />
-            <span style={{color:"#ae5856"}}>
+            <span style={{color:"#56ae97"}}>
             {errors.username && errors.username}
             </span>
           </Form.Field>
@@ -94,7 +94,7 @@ class Login extends Component {
               id='password'
               name='password'
             />  
-            <span style={{color:"#ae5856"}}>
+            <span style={{color:"#56ae97"}}>
             {errors.password && errors.password}
             </span>
             </Form.Field>
