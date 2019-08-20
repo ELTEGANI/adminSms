@@ -9,7 +9,7 @@ class CompanyInbox extends Component {
    
    state = {
      data:{
-       companyphone:"+249963176212"
+       companyphone:localStorage.getItem('username')
      },
      replay:'',
    }

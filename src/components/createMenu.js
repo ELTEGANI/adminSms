@@ -9,7 +9,7 @@ class createMenu extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      questionsandanswer: [{question:"",answer:"",questionorder:"",registeration_id:1}],
+      questionsandanswer: [{question:"",answer:"",questionorder:"",registeration_id:""}],
       errors: {},
       msgerror:''
     }
@@ -17,7 +17,6 @@ class createMenu extends Component {
   }
    
     
-
   showUi(){
     return this.state.questionsandanswer.map((el,i) => (
       <div key={i}>
@@ -48,7 +47,7 @@ class createMenu extends Component {
      <Input 
        name="registeration_id" 
        style={{display: 'none'}}
-       value={el.registeration_id = "+249963176212"}
+       value={el.registeration_id = localStorage.getItem('username')}
        onChange={this.createHandleChange.bind(this, i)} 
        />
        <input  
@@ -110,8 +109,8 @@ handleSubmit(event) {
   this.setState({errors});
   const isValid = Object.keys(errors).length === 0;
   if(isValid){
-    // const isonline = navigator.onLine;
-    // if(isonline){
+    const isonline = navigator.onLine;
+    if(isonline){
       let axiosConfig = {
         headers: {
           'Content-Type': 'application/json'        }    
@@ -124,9 +123,9 @@ handleSubmit(event) {
     }).catch(error=>{
             console.log(error)
     }) 
-    // }else{
-    //   alert('Dear User No Internet Connection Available');
-    // }
+    }else{
+      alert('Dear User No Internet Connection Available');
+    }
   }
      
    }

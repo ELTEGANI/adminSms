@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Tab,Menu} from 'semantic-ui-react'
+import {Container,Tab,Menu,Button} from 'semantic-ui-react'
 import CompanyInbox from './CompanyInbox';
 import CreateMenu from './createMenu';
 
@@ -19,9 +19,18 @@ class DashBoard extends Component {
       <Menu.Item as="h2" header>
              SMS Admin    
       </Menu.Item>
-
-
     </Container>
+    <Container>
+      <Menu.Menu position="right">
+        <Menu.Item name="logout">
+        <Button  onClick={this.signOut}
+         size='tiny' color='red'
+        >Exit</Button>
+        </Menu.Item>
+      </Menu.Menu>
+
+      
+</Container>  
   </Menu>     
   </Container>
 
@@ -33,6 +42,11 @@ class DashBoard extends Component {
           
       }
 
+
+      signOut = () => {
+        localStorage.clear();
+        this.props.history.push('/');
+}
 
 }
 
