@@ -32,7 +32,7 @@ sendReplay = (userPhoneNumber) =>{
   if(isonline){  
     let axiosConfig = {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     };
     let replay = this.state.replay

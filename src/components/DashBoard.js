@@ -10,9 +10,10 @@ class DashBoard extends Component {
         const panes = [
           { menuItem: 'Create Menu', render: () => <Tab.Pane><CreateMenu/></Tab.Pane> },
           { menuItem: 'Message Inbox', render: () => <Tab.Pane><CompanyInbox/></Tab.Pane> },
-                ]
+          { menuItem: 'Mange SIM Card', render: () => <Tab.Pane>Mange SIM</Tab.Pane> }        
+        ]
           return(
-            <div>              
+            <div>                
     <Container style={{paddingTop:20}} >
             <Menu>  
     <Container>
@@ -47,7 +48,5 @@ class DashBoard extends Component {
 }
 
 }
-
-
-
+      
 export default DashBoard

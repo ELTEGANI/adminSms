@@ -59,7 +59,7 @@ class Login extends Component {
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         {
-         <Header as='h2' color='blue' textAlign='center'>
+         <Header as='h2' color='yellow' textAlign='center'>
             SMS Admin Login
         </Header>         
         }
@@ -69,7 +69,7 @@ class Login extends Component {
           <Input 
               fluid icon='phone' 
               iconPosition='left' 
-              placeholder='username' 
+              placeholder='+249' 
               value={data.email}
               onChange={this.handleonChange}
               id='username'
@@ -99,7 +99,7 @@ class Login extends Component {
             </span>
             </Form.Field>
                        
-            <Button type="submit" color='blue' fluid size='medium' >
+            <Button type="submit" color='yellow' fluid size='medium' >
               Login
             </Button>
           </Segment>

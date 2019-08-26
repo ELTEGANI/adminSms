@@ -11,7 +11,8 @@ class createMenu extends Component {
     this.state = { 
       questionsandanswer: [{question:"",answer:"",questionorder:"",registeration_id:""}],
       errors: {},
-      msgerror:''
+      msgerror:'',
+      targetValue:''
     }
      this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -50,13 +51,15 @@ class createMenu extends Component {
        value={el.registeration_id = localStorage.getItem('username')}
        onChange={this.createHandleChange.bind(this, i)} 
        />
-       <input  
+
+      <input  
        type='button' 
        value='Remove' 
        onClick={this.removeClick.bind(this, i)}
        />
-      </div>          
+      </div>  
     ))
+
  }
 
  removeClick(i){
@@ -92,7 +95,7 @@ createHandleChange(i, e) {
   questionsandanswer[i] = {...questionsandanswer[i], [name]: value};
   this.setState({ questionsandanswer });
 }
-
+  
 
 
 addClick(){
@@ -111,10 +114,14 @@ handleSubmit(event) {
   if(isValid){
     const isonline = navigator.onLine;
     if(isonline){
+      
       let axiosConfig = {
         headers: {
-          'Content-Type': 'application/json'        }    
-      };  
+          'Content-Type': 'application/json',
+          'Authorization':'JWT ' +localStorage.getItem('access_token')
+        }
+       };
+
       axios.post('http://127.0.0.1:5000/createmenu',JSON.stringify(this.state),axiosConfig)
     .then(response=>{
         this.setState({
@@ -164,7 +171,7 @@ handleSubmit(event) {
         <br/>  
 
 
-    <Button fluid color='green'>Create Menu</Button>
+    <Button fluid color='yellow'>Create Menu</Button>
 
   </Form>
             </div>
