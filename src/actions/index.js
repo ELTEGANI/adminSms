@@ -4,10 +4,15 @@ import axios from 'axios'
 export function loginUser(credentials,history) {
   return async (dispatch) => {
     try {
-      const res = await axios.post('http://127.0.0.1:5000/auth',credentials);
+      const res = await axios.post('http://127.0.0.1:5000/api/companies/logincompany',credentials);
+      console.log(res);
       dispatch({ type: 'USER_LOGIN'});
-      localStorage.setItem('access_token',res.data.access_token);
-      localStorage.setItem('username',credentials.username);
+      localStorage.setItem('accesstoken',res.data.accesstoken);
+      localStorage.setItem('companyPhone',res.data.companyPhone);
+      localStorage.setItem('companyName',res.data.companyName);
+      localStorage.setItem('ownerName',res.data.ownerName);
+      localStorage.setItem('ownerPhone',res.data.ownerPhone);
+      localStorage.setItem('ownerEmail',res.data.ownerEmail);
       history.push('/DashBoard');
     } catch(error) {
       dispatch({

@@ -62,7 +62,6 @@ sendReplay = (userPhoneNumber) =>{
                     <Button floated='left' color='blue'>Replay</Button>} 
                     closeIcon>
                    <Modal.Header><center>Send Replay To User</center></Modal.Header>
-           
                    <Form>
     <Form.Field>
     <br/>

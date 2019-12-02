@@ -7,7 +7,7 @@ class Login extends Component {
 
     state = {
         data:{
-          username : "",
+          companyPhone : "",
           password:"" 
         },
         loading:false, 
@@ -40,7 +40,7 @@ class Login extends Component {
    
    validate = (data) =>{
      const errors = {};
-     if(!data.username) errors.username = "Email Can't Be empty";
+     if(!data.companyPhone) errors.companyPhone = "Email Can't Be empty";
      if(!data.password) errors.password = "Passwrod Can't Be empty";
      return errors;
    }
@@ -65,18 +65,18 @@ class Login extends Component {
         }
         <Form size='large' onSubmit={this.SubmitForm}>
           <Segment raised>
-          <Form.Field error={!!errors.username}>
+          <Form.Field error={!!errors.companyPhone}>
           <Input 
               fluid icon='phone' 
               iconPosition='left' 
               placeholder='+249' 
               value={data.email}
               onChange={this.handleonChange}
-              id='username'
-              name='username'    
+              id='companyPhone'
+              name='companyPhone'    
             />
             <span style={{color:"#56ae97"}}>
-            {errors.username && errors.username}
+            {errors.companyPhone && errors.companyPhone}
             </span>
           </Form.Field>
             

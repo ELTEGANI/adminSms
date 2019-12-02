@@ -9,10 +9,11 @@ class createMenu extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      questionsandanswer: [{question:"",answer:"",questionorder:"",registeration_id:""}],
+      questionsandanswer: [{question:"",answer:"",questionorder:"",companyid:""}],
       errors: {},
       msgerror:'',
-      targetValue:''
+      targetValue:'',
+      companyid:localStorage.getItem('companyPhone')
     }
      this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -46,9 +47,9 @@ class createMenu extends Component {
        />
      
      <Input 
-       name="registeration_id" 
+       name="companyid" 
        style={{display: 'none'}}
-       value={el.registeration_id = localStorage.getItem('username')}
+       value={el.companyid = localStorage.getItem('companyPhone')}
        onChange={this.createHandleChange.bind(this, i)} 
        />
 
@@ -100,7 +101,7 @@ createHandleChange(i, e) {
 
 addClick(){
   this.setState(prevState => ({ 
-    questionsandanswer: [...prevState.questionsandanswer, { question:"",answer: "",questionorder:"",registeration_id:""}]
+    questionsandanswer: [...prevState.questionsandanswer, { question:"",answer: "",questionorder:"",companyid:""}]
   }))
 }
 
@@ -118,11 +119,13 @@ handleSubmit(event) {
       let axiosConfig = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':'JWT ' +localStorage.getItem('access_token')
+          'Authorization':'JWT ' +localStorage.getItem('accesstoken')
         }
-       };
+       }; 
 
-      axios.post('http://127.0.0.1:5000/createmenu',JSON.stringify(this.state),axiosConfig)
+       console.log(JSON.stringify(this.state));
+
+      axios.post('http://127.0.0.1:5000/api/companies/createmenu',JSON.stringify(this.state),axiosConfig)
     .then(response=>{
         this.setState({
           msgerror:response.data.message
