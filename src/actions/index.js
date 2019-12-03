@@ -24,16 +24,17 @@ export function loginUser(credentials,history) {
 }
 
 
-  export function getInboxList(companyphone){
+  export function getInboxList(companyPhone){
+    console.log(companyPhone);
+
   let axiosConfig = {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization':'JWT ' +localStorage.getItem('access_token')
+      'Authorization':'JWT ' +localStorage.getItem('accesstoken')
 
         }
     };
-
-  const request = axios.post(`http://127.0.0.1:5000/companyInbox`,companyphone,axiosConfig)
+  const request = axios.post(`http://127.0.0.1:5000/api/companies/getallmessages`,companyPhone,axiosConfig)
   .then(response => response.data);
   return {
   type:'INBOX',

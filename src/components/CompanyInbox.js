@@ -9,7 +9,7 @@ class CompanyInbox extends Component {
    
    state = {
      data:{
-       companyphone:localStorage.getItem('username')
+      companyPhone:localStorage.getItem('companyPhone')
      },
      replay:'',
    }
@@ -37,7 +37,7 @@ sendReplay = (userPhoneNumber) =>{
     };
     let replay = this.state.replay
     let senderPhone = userPhoneNumber
-    let sendReplayToUser = {senderPhone:senderPhone,replay:replay}
+    let sendReplayToUser = {companyid:localStorage.getItem('companyPhone'),senderPhone:senderPhone,replay:replay}
     axios.post(`http://127.0.0.1:5000/sendReplayToUser`,JSON.stringify(sendReplayToUser),axiosConfig)
     .then(res => { 
     console.log(res);
@@ -51,13 +51,13 @@ sendReplay = (userPhoneNumber) =>{
       render() { 
             return( 
             <div>
-              {this.props.inboxlist.inbox.inboxlist && this.props.inboxlist.inbox.inboxlist.msgs != null ?
-                this.props.inboxlist.inbox.inboxlist.msgs.map((item,i)=>(
+              {this.props.inboxlist.inbox.inboxlist && this.props.inboxlist.inbox.inboxlist.companyMessages != null ?
+                this.props.inboxlist.inbox.inboxlist.companyMessages.map((item,i)=>(
                 <Item.Group key={i}>
                <Item>    
                 <Item.Content>
                   <label>{item.senderPhone}</label>
-                  <Item.Meta color='black'>{item.userMsg}</Item.Meta>
+                  <Item.Meta color='black'>{item.incomingMessages}</Item.Meta>
                   <Modal centered={false} trigger={
                     <Button floated='left' color='blue'>Replay</Button>} 
                     closeIcon>
@@ -65,7 +65,7 @@ sendReplay = (userPhoneNumber) =>{
                    <Form>
     <Form.Field>
     <br/>
-      <label>User:{item.userMsg}</label>
+      <label>User:{item.incomingMessages}</label>
       <br/>
       <TextArea placeholder='your replay here' 
         defaultValue={this.state.replay}
@@ -91,6 +91,7 @@ sendReplay = (userPhoneNumber) =>{
         }
 
         function  mapStateToProps (state){
+          console.log(state)
           return {
             inboxlist:state
           }
