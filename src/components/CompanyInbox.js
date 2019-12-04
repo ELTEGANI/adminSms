@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Button,Modal,Item,Form,TextArea} from 'semantic-ui-react'
+import {Button,Modal,Item,Form,TextArea,Header} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import {getInboxList} from '../actions';
 import axios from 'axios'
@@ -51,6 +51,10 @@ sendReplay = (userPhoneNumber) =>{
       render() { 
             return( 
             <div>
+               <Header as='h1' textAlign='center'>
+                Messages Of Your Customers
+             </Header> 
+             <br/>
               {this.props.inboxlist.inbox.inboxlist && this.props.inboxlist.inbox.inboxlist.companyMessages != null ?
                 this.props.inboxlist.inbox.inboxlist.companyMessages.map((item,i)=>(
                 <Item.Group key={i}>
@@ -59,13 +63,13 @@ sendReplay = (userPhoneNumber) =>{
                   <label>{item.senderPhone}</label>
                   <Item.Meta color='black'>{item.incomingMessages}</Item.Meta>
                   <Modal centered={false} trigger={
-                    <Button floated='left' color='blue'>Replay</Button>} 
+                    <Button floated='left' color='blue'>Send FeedBack</Button>} 
                     closeIcon>
-                   <Modal.Header><center>Send Replay To User</center></Modal.Header>
+                   <Modal.Header><center>Send FeedBack To User</center></Modal.Header>
                    <Form>
     <Form.Field>
     <br/>
-      <label>User:{item.incomingMessages}</label>
+      <label>{item.senderPhone} said: {item.incomingMessages}</label>
       <br/>
       <TextArea placeholder='your replay here' 
         defaultValue={this.state.replay}
@@ -75,7 +79,7 @@ sendReplay = (userPhoneNumber) =>{
     <br/>
     <Button  color='green' fluid  
      onClick={this.sendReplay.bind(this,item.senderPhone)}
-    >Send Sms</Button>
+    >Send FeedBack To {item.senderPhone}</Button>
     <br/>
   </Form>  
 

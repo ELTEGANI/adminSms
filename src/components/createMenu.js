@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 class createMenu extends Component {
-   
+
   constructor(props) {
     super(props);
     this.state = { 
@@ -13,7 +13,9 @@ class createMenu extends Component {
       errors: {},
       msgerror:'',
       targetValue:'',
-      companyid:localStorage.getItem('companyPhone')
+      companyid:localStorage.getItem('companyPhone'),
+      companyName:localStorage.getItem('companyName'),
+      ownerName:localStorage.getItem('ownerName')
     }
      this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -142,12 +144,21 @@ handleSubmit(event) {
 
 
  render(){  
-  const {errors} = this.state;  
   return(  
        <div>   
-      <Header as='h2' textAlign='center'>
-      Create New Menu
+      <Header as='h3' textAlign='center'>
+        {this.state.companyName}<br/>
     </Header> 
+    <Header as='h3' textAlign='center'>
+     Admin:{this.state.ownerName} 
+    </Header>
+    <Header as='h3' textAlign='center'>
+    Current SIM Balance is : 0.0 SDG
+    </Header>
+    <Header as='h4' textAlign='center'>
+     Create Your Menu Using Form Below
+    </Header>
+
     <br/>
        <br/>
        <div>
