@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Container,Tab,Menu,Button} from 'semantic-ui-react'
 import CompanyInbox from './CompanyInbox';
 import CreateMenu from './createMenu';
+import Statistics from './Statistics';
 
 class DashBoard extends Component {
    
@@ -10,9 +11,10 @@ class DashBoard extends Component {
         const panes = [
           { menuItem: 'Create Menu', render: () => <Tab.Pane><CreateMenu/></Tab.Pane> },
           { menuItem: 'Message Inbox', render: () => <Tab.Pane><CompanyInbox/></Tab.Pane> },
+          { menuItem: 'Statistics', render: () => <Tab.Pane><Statistics/></Tab.Pane> }
         ]
           return(
-            <div>                
+            <div>                 
     <Container style={{paddingTop:20}} >
             <Menu>  
     <Container>

@@ -41,3 +41,20 @@ export function loginUser(credentials,history) {
   payload:request
 }
 }
+
+
+export function getStatistics(companyPhone){
+let axiosConfig = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization':'JWT ' +localStorage.getItem('accesstoken')
+
+      }
+  };
+const request = axios.post(`http://127.0.0.1:5000/api/companies/statistic`,companyPhone,axiosConfig)
+.then(response => response.data);
+return {
+type:'STATISTIC',
+payload:request
+}
+}

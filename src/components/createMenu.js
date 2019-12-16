@@ -108,8 +108,6 @@ addClick(){
 }
 
 handleSubmit(event) {
-  console.log(JSON.stringify(this.state))
-  event.preventDefault();
   event.preventDefault();
   const errors = this.validate();
   this.setState({errors});
@@ -117,16 +115,13 @@ handleSubmit(event) {
   if(isValid){
     const isonline = navigator.onLine;
     if(isonline){
-      
       let axiosConfig = {
         headers: {
           'Content-Type': 'application/json',
           'Authorization':'JWT ' +localStorage.getItem('accesstoken')
         }
        }; 
-
-       console.log(JSON.stringify(this.state));
-
+       
       axios.post('http://127.0.0.1:5000/api/companies/createmenu',JSON.stringify(this.state),axiosConfig)
     .then(response=>{
         this.setState({
@@ -185,7 +180,7 @@ handleSubmit(event) {
         <br/>  
 
 
-    <Button fluid color='yellow'>Create Menu</Button>
+    <Button fluid color='yellow' >Create Menu</Button>
 
   </Form>
             </div>

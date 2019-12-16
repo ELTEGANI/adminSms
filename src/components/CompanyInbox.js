@@ -51,7 +51,7 @@ sendReplay = (userPhoneNumber) =>{
       render() { 
             return( 
             <div>
-               <Header as='h1' textAlign='center'>
+               <Header as='h3' textAlign='center'>
                 Messages Of Your Customers
              </Header> 
              <br/>
