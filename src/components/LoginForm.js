@@ -29,11 +29,11 @@ class Login extends Component {
         this.setState({errors});
         if(Object.keys(errors).length === 0){
           const isonline = navigator.onLine;
-          if(isonline){
+          // if(isonline){
             this.props.loginUser(this.state.data,this.props.history)
-          }else{
-           alert('Dear User No Internet Connection Available');
-          }
+          // }else{
+          //  alert('Dear User No Internet Connection Available');
+          // }
         }
    }
         

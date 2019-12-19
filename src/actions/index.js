@@ -58,3 +58,19 @@ type:'STATISTIC',
 payload:request
 }
 }
+
+
+export function getMenu(companyPhone){
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization':'JWT ' +localStorage.getItem('accesstoken')
+        }
+    };
+  const request = axios.post(`http://127.0.0.1:5000/api/companies/getmenus`,companyPhone,axiosConfig)
+  .then(response => response.data);
+  return {
+  type:'menu',
+  payload:request
+  }
+  }
