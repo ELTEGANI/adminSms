@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import {getMenu} from '../actions';
 import {connect} from 'react-redux';
 import {Form,Button,Message,Header, Input, MenuMenu} from 'semantic-ui-react'
+import axios from 'axios';
 
 
 class UpdateMenu extends Component {
@@ -71,12 +72,12 @@ class UpdateMenu extends Component {
        onChange={this.createHandleChange.bind(this, i)} 
        />
      
-     {/* <Input 
+     <Input 
        name="companyid" 
        style={{display: 'none'}}
        value={el.companyid = localStorage.getItem('companyPhone')}
        onChange={this.createHandleChange.bind(this, i)} 
-       /> */}
+       />
 
       <input  
        type='button' 
@@ -133,9 +134,31 @@ handleSubmit(event) {
   event.preventDefault();
   const errors = this.validate();
   this.setState({errors});
-  //const isValid = Object.keys(errors).length === 0;
+  const isValid = Object.keys(errors).length === 0;
+  if(isValid){
+    const isonline = navigator.onLine;
+    if(isonline){
+      let axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':'JWT ' +localStorage.getItem('accesstoken')
+        }
+       }; 
+       console.log(JSON.stringify(this.state))
+      axios.post('http://127.0.0.1:5000/api/companies/updatemenus',JSON.stringify(this.state),axiosConfig)
+    .then(response=>{
+        this.setState({
+          msgerror:response.data.message
+        })
+    }).catch(error=>{
+            console.log(error) 
+    }) 
+    }else{
+      alert('Dear User No Internet Connection Available');
+    }
+  }
+}
 
-   }
 
   
   render() { 
@@ -145,7 +168,19 @@ handleSubmit(event) {
      Update your Menu
     </Header> 
     <br/>
-    <br/>
+       <br/>
+       <div>
+         {this.state.msgerror?  
+         <Message positive>
+         <Message.Header>
+          {this.state.msgerror}
+         </Message.Header>
+         </Message>
+         :null
+         }
+       </div>
+       <br/>
+       <br/>
    <Form onSubmit={this.handleSubmit}>
        <Form.Field>
         <div> 
