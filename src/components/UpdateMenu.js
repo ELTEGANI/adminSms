@@ -145,7 +145,7 @@ handleSubmit(event) {
         }
        }; 
        console.log(JSON.stringify(this.state))
-      axios.post('http://127.0.0.1:5000/api/companies/updatemenus',JSON.stringify(this.state),axiosConfig)
+      axios.post('http://172.105.87.5/api/companies/updatemenus',JSON.stringify(this.state),axiosConfig)
     .then(response=>{
         this.setState({
           msgerror:response.data.message
@@ -190,7 +190,7 @@ handleSubmit(event) {
        </div> 
        </Form.Field>  
        <br/>  
-   <Button fluid color='yellow' >Create Menu</Button>
+   <Button fluid color='yellow' >Update Menu</Button>
  </Form>
            </div>
          );

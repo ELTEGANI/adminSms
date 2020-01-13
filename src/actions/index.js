@@ -4,7 +4,7 @@ import axios from 'axios'
 export function loginUser(credentials,history) {
   return async (dispatch) => {
     try {
-      const res = await axios.post('http://127.0.0.1:5000/api/companies/logincompany',credentials);
+      const res = await axios.post('http://172.105.87.5/api/companies/logincompany',credentials);
       console.log(res);
       dispatch({ type: 'USER_LOGIN'});
       localStorage.setItem('accesstoken',res.data.accesstoken);
@@ -34,7 +34,7 @@ export function loginUser(credentials,history) {
 
         }
     };
-  const request = axios.post(`http://127.0.0.1:5000/api/companies/getallmessages`,companyPhone,axiosConfig)
+  const request = axios.post(`http://172.105.87.5/api/companies/getallmessages`,companyPhone,axiosConfig)
   .then(response => response.data);
   return {
   type:'INBOX',
@@ -51,7 +51,7 @@ let axiosConfig = {
 
       }
   };
-const request = axios.post(`http://127.0.0.1:5000/api/companies/statistic`,companyPhone,axiosConfig)
+const request = axios.post(`http://172.105.87.5/api/companies/statistic`,companyPhone,axiosConfig)
 .then(response => response.data);
 return {
 type:'STATISTIC',
@@ -67,7 +67,7 @@ export function getMenu(companyPhone){
       'Authorization':'JWT ' +localStorage.getItem('accesstoken')
         }
     };
-  const request = axios.post(`http://127.0.0.1:5000/api/companies/getmenus`,companyPhone,axiosConfig)
+  const request = axios.post(`http://172.105.87.5/api/companies/getmenus`,companyPhone,axiosConfig)
   .then(response => response.data);
   return {
   type:'menu',
