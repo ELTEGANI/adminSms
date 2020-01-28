@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Button,Modal,Item,Form,TextArea,Header} from 'semantic-ui-react'
+import {Button,Modal,Message,Item,Form,TextArea,Header} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import {getInboxList} from '../actions';
 import axios from 'axios'
@@ -12,6 +12,7 @@ class CompanyInbox extends Component {
       companyPhone:localStorage.getItem('companyPhone')
      },
      replay:'',
+     msgerror:''
    }
     
      
@@ -38,10 +39,10 @@ sendReplay = (userPhoneNumber) =>{
     let replay = this.state.replay
     let senderPhone = userPhoneNumber
     let sendReplayToUser = {companyid:localStorage.getItem('companyPhone'),senderPhone:senderPhone,replay:replay}
-    axios.post(`http://127.0.0.1:5000/sendReplayToUser`,JSON.stringify(sendReplayToUser),axiosConfig)
+    axios.post(`http://172.105.87.5/api/companies/sendReplayToUser`,JSON.stringify(sendReplayToUser),axiosConfig)
     .then(res => { 
     console.log(res);
-    this.setState({replay:"",senderPhone:""})
+    this.setState({replay:"",senderPhone:"",msgerror:res.data.message})
     })       
  }else{
   alert('Dear User No Internet Connection Available');
@@ -65,6 +66,7 @@ sendReplay = (userPhoneNumber) =>{
                   <Modal centered={false} trigger={
                     <Button floated='left' color='blue'>Send FeedBack</Button>} 
                     closeIcon>
+                       <br/>
                    <Modal.Header><center>Send FeedBack To User</center></Modal.Header>
                    <Form>
     <Form.Field>
@@ -81,6 +83,22 @@ sendReplay = (userPhoneNumber) =>{
      onClick={this.sendReplay.bind(this,item.senderPhone)}
     >Send FeedBack To {item.senderPhone}</Button>
     <br/>
+
+    <br/>
+       <div>
+         {this.state.msgerror?  
+         <Message positive>
+         <Message.Header>
+          {this.state.msgerror}
+         </Message.Header>
+         </Message>
+         :null
+         }
+       </div>
+       <br/>
+       <br/>
+
+       
   </Form>  
 
                   </Modal>

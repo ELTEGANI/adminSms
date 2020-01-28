@@ -9,7 +9,7 @@ import axios from 'axios';
 class UpdateMenu extends Component {
 
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {
       data:{
         companyPhone:localStorage.getItem('companyPhone')
@@ -68,7 +68,7 @@ class UpdateMenu extends Component {
        placeholder="questionorder" 
        name="questionorder" 
        style={{display: 'none'}}
-       value={el.questionorder || ''}
+       value={el.questionorder = i+1}
        onChange={this.createHandleChange.bind(this, i)} 
        />
      
