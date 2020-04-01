@@ -48,7 +48,6 @@ let axiosConfig = {
   headers: {
     'Content-Type': 'application/json',
     'Authorization':'JWT ' +localStorage.getItem('accesstoken')
-
       }
   };
 const request = axios.post(`http://172.105.87.5/api/companies/statistic`,companyPhone,axiosConfig)

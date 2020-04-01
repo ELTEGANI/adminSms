@@ -25,7 +25,7 @@ class CompanyInbox extends Component {
       replay:e.target.value
     })
   } 
-
+  
 
 sendReplay = (userPhoneNumber) =>{
   console.log(this.state.senderPhone)
@@ -64,27 +64,15 @@ sendReplay = (userPhoneNumber) =>{
                   <label>{item.senderPhone}</label>
                   <Item.Meta color='black'>{item.incomingMessages}</Item.Meta>
                   <Modal centered={false} trigger={
-                    <Button floated='left' color='blue'>Send FeedBack</Button>} 
+                    <Button floated='left' color='blue'>تم الاتصال بصاحب البلاغ</Button>} 
                     closeIcon>
                        <br/>
                    <Modal.Header><center>Send FeedBack To User</center></Modal.Header>
                    <Form>
-    <Form.Field>
-    <br/>
-      <label>{item.senderPhone} said: {item.incomingMessages}</label>
-      <br/>
-      <TextArea placeholder='your replay here' 
-        defaultValue={this.state.replay}
-        onChange={this.handleChange}
-      />
-    </Form.Field>   
-    <br/>
     <Button  color='green' fluid  
      onClick={this.sendReplay.bind(this,item.senderPhone)}
-    >Send FeedBack To {item.senderPhone}</Button>
-    <br/>
-
-    <br/>
+     >تاكيد معالجة البلاغ</Button>
+  
        <div>
          {this.state.msgerror?  
          <Message positive>
