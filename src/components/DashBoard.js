@@ -29,7 +29,7 @@ class DashBoard extends Component {
         <Menu.Item name="logout">
         <Button  onClick={this.signOut}
          size='tiny' color='red'
-        >تسجيل خروج</Button>
+        >SignOut</Button>
         </Menu.Item>
       </Menu.Menu>   
 </Container>  
