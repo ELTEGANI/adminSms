@@ -45,7 +45,7 @@ sendReplay = (userPhoneNumber,index) =>{
     }
     
     console.log(sendReplayToUser);
-    axios.put(`http://172.105.87.5/api/companies/updateStatus`,JSON.stringify(sendReplayToUser),axiosConfig)
+    axios.put(`https://ssmss1.com/api/companies/updateStatus`,JSON.stringify(sendReplayToUser),axiosConfig)
     .then(res => {   
       this.props.inboxlist.inbox.inboxlist.companyMessages.splice(index,1);
     this.setState({replay:"",senderPhone:"",msgerror:res.data.message})

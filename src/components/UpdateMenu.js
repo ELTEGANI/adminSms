@@ -2,7 +2,7 @@
 import React,{Component} from 'react';
 import {getMenu} from '../actions';
 import {connect} from 'react-redux';
-import {Form,Button,Message,Header, Input, MenuMenu} from 'semantic-ui-react'
+import {Form,Button,Message,Header,Input} from 'semantic-ui-react'
 import axios from 'axios';
 
 
@@ -145,7 +145,7 @@ handleSubmit(event) {
         }
        }; 
        console.log(JSON.stringify(this.state))
-      axios.post('http://172.105.87.5/api/companies/updatemenus',JSON.stringify(this.state),axiosConfig)
+      axios.post('https://ssmss1.com/api/companies/updatemenus',JSON.stringify(this.state),axiosConfig)
     .then(response=>{
         this.setState({
           msgerror:response.data.message

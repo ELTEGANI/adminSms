@@ -122,7 +122,7 @@ handleSubmit(event) {
         }
        }; 
        
-      axios.post('http://172.105.87.5/api/companies/createmenu',JSON.stringify(this.state),axiosConfig)
+      axios.post('https://ssmss1.com/api/companies/createmenu',JSON.stringify(this.state),axiosConfig)
     .then(response=>{
         this.setState({
           msgerror:response.data.message
