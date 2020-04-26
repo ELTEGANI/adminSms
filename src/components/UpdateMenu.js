@@ -2,7 +2,7 @@
 import React,{Component} from 'react';
 import {getMenu} from '../actions';
 import {connect} from 'react-redux';
-import {Form,Button,Message,Header,Input} from 'semantic-ui-react'
+import {Form,Button,Message,Header,Input, TextArea} from 'semantic-ui-react'
 import axios from 'axios';
 
 
@@ -57,8 +57,8 @@ class UpdateMenu extends Component {
        />
        <br/>
        <br/>
-       <Input 
-       placeholder="answer" 
+       <TextArea 
+       placeholder="your answers should ordered with symbols" 
        name="answers" 
        value={el.answers || ''}
        onChange={this.createHandleChange.bind(this, i)} 
